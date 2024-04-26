@@ -1,10 +1,15 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import { BrowserRouter } from 'react-router-dom'
-import { ThemeProvider } from 'styled-components'
-import { createTheme } from '@mui/material'
+import ReactDOM from 'react-dom'
 import './index.css'
+// import './login.css'
+import App from './App'
+import '@fontsource/roboto/300.css'
+import '@fontsource/roboto/400.css'
+import '@fontsource/roboto/500.css'
+import '@fontsource/roboto/700.css'
+import '@fontsource/dm-sans'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { BrowserRouter } from 'react-router-dom'
 
 declare module '@mui/material/styles' {
   interface Theme {
@@ -49,12 +54,18 @@ const theme = createTheme({
   },
 })
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.render(
+
   <React.StrictMode>
-       <BrowserRouter>
-        <ThemeProvider theme={theme}>
+    {/* <Authenticator.Provider > */}
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
         <App />
       </ThemeProvider>
     </BrowserRouter>
+    {/* </Authenticator.Provider> */}
   </React.StrictMode>,
+  document.getElementById('root')
 )
+
+

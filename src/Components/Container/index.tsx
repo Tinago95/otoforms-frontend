@@ -113,8 +113,6 @@ const Container: React.FC<ParentComProps> = (props) => {
       parent: true,
       children: [] as NavItemProps[]
     },
-
-
     {
       label: "Form Builder",
       icon: icons.Construction,
@@ -202,12 +200,12 @@ const Container: React.FC<ParentComProps> = (props) => {
             display: "flex",
             justifyContent: "center",
             flexDirection: "row",
-            height: "calc(100vh - 40px)",
-            flexGrow: 2,
+            flexGrow: 1,
             flexShrink: 1,
             color: "white",
             fontSize: "20px",
             padding: "20px",
+            height: "calc( 100vh - 40px)",
             bottom: "0px",
             right: "0px",
           }}

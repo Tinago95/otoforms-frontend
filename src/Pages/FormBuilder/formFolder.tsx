@@ -121,7 +121,7 @@ export const EditableFolder = (input: { label: string, callback: (input: string)
                 onClick={handleClick}
             >
                 <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', gap: labelText ? '10px' : '0px', alignItems: 'center' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '10px', minHeight: '20px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '10px', minHeight: '50px' }}>
 
                         <FolderOutlined color="primary" />
 
@@ -139,7 +139,7 @@ export const EditableFolder = (input: { label: string, callback: (input: string)
                         />
 
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'row', gap: '5px'}}>
+                    <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'row', gap: '5px', width: '100%' }}>
                         {labelText && (
                             <>
                                 <Button variant='outlined' onClick={onDone} style={{ width: '100%' }} color="info">Add</Button>

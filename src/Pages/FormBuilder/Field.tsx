@@ -42,7 +42,7 @@ export const DragableField = (props: DragableFieldProps) => {
         <CustomDiv
             // noBorder={true}
 
-            style={{ borderColor: isHovering ? "#6564DB" : 'grey', borderRadius: '5px', minHeight: '10px' }}
+            style={{ borderColor: isHovering ? "#6564DB" : 'grey', padding: '10px', borderRadius: '5px', minHeight: '50px' }}
             isDragging={isDragging}
             ref={drag}
             highlightColor="#6564DB"

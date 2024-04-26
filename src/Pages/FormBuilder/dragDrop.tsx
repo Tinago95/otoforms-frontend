@@ -239,19 +239,22 @@ export function DragDrop() {
         setSelectedFormId(newForm.id)
         setSelectedForm(newForm)
     }
-    return <ThemeProvider theme={theme}><div style={{ display:'flex',flexDirection: 'column', justifyItems: 'center',  alignItems: 'center', width: '100%' }}>
+    return <ThemeProvider theme={theme}><div style={{ gap: "10px", flexDirection: 'column', justifyItems: 'center', alignItems: 'center', width: '100%' }}>
         {selectedForm && selectedForm?.fields.length > 0 && <TemporaryDrawer anchor={'right'} open={showDrawer} toggleDrawer={setShowDrawer} type={selectedForm.fields.find((item) => item.id === selectedFieldId)?.fieldType as FieldType} onCancel={removeLastFieldFromBoard} onSave={updateField} />}
-        <div style={{ display: 'flex', justifyContent: 'end', minWidth: '83vw', marginBottom:'5px' }}>
+        <div style={{ display: 'flex', justifyContent: 'end', width: '100%', paddingRight: '10px' }}>
 
-            <ToggleView callback={(input: string) => (setView(input))} />
+
+
+
+            <div> <ToggleView callback={(input: string) => (setView(input))} /> </div>
 
         </div>
-        <div style={{ display: 'flex', gap: "10px", flexDirection: 'row',  justifyItems: 'center', alignItems: 'flex-start', minWidth: '83vw', height:'85%' }} >
+        <div style={{ display: 'flex', gap: "10px", flexDirection: 'row', padding: '10px', height: '100%', justifyItems: 'center', alignItems: 'flex-start', minWidth: '83vw' }} >
             <StyledCard style={{
                 width: '22%',
-                display: "flex", justifyContent: 'flex-start', flexDirection: 'column', gridTemplateColumns: '1fr', gap: '10px',padding: '0px 15px 0px 15px',
+                display: "flex", justifyContent: 'flex-start', flexDirection: 'column', gridTemplateColumns: '1fr', gap: '10px', padding: "6px",
             }}>
-                <div style={{ display: 'flex', justifyContent: 'center',  }}>
+                <div style={{ display: 'flex', justifyContent: 'center', padding: '10px', }}>
                     <Typography fontWeight={900} color={'grey'}>Forms</Typography>
                 </div>
                 {
@@ -261,7 +264,7 @@ export function DragDrop() {
                 }
                 <EditableFolder label="" callback={addForm} />
             </StyledCard>
-            <StyledCard ref={forms.length ? drop : null} style={{  display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', backgroundColor: 'whitesmoke', position: 'relative', gap: '10px', height:'100%' }}>
+            <StyledCard ref={forms.length ? drop : null} style={{ padding: '30px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', backgroundColor: 'whitesmoke', position: 'relative', gap: '10px', }}>
 
                 <div style={{ marginBottom: '20px', width: '100%', }}>
                     {selectedForm?.fields && <FormEngine editMode={edit} formDef={selectedForm?.fields as FieldDef[]} prefillData={{}} formUI={formUI} onFieldDelete={onFieldDelete} />}
@@ -275,14 +278,14 @@ export function DragDrop() {
                         <icons.Delete />
                     </Fab>  </div>}
             </StyledCard>
-            {edit && <StyledCard style={{ display: 'flex', flexDirection: 'column',width: '22%', gap:'10px', padding: '0px 10px 0px 10px'}}>
-                <div style={{ display: 'flex', justifyContent: 'center',  }}>
+            {edit && <StyledCard style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '21%', }}>
+                <div style={{ display: 'flex', justifyContent: 'center', padding: '6px', }}>
                     <Typography fontWeight={900} color={'grey'}>
                         Drag & Drop Fields
                     </Typography>
                 </div>
                 {formFieldList.map((item, index) => (
-                    <ListItem ref={listItemRef} style={{ display: 'flex', width: '100%', justifyContent: 'center'}} key={item.label} disablePadding>
+                    <ListItem ref={listItemRef} style={{ display: 'flex', width: '100%', justifyContent: 'center', }} key={item.label} disablePadding>
                         <DragableField muiIcon={item.icon} label={item.label} callback={setShowWarning} type={item.type as FieldType} />
                     </ListItem>
                 ))}
