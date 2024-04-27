@@ -30,7 +30,7 @@ export default function TemporaryDrawer(props: { anchor: Anchor, open: boolean, 
             elevation={1}
             sx={{
                 display: 'flex', alignItems: 'center', justifyItems: 'center', '& .MuiDrawer-paper': {
-                    transitionDuration: '6s', maxWidth: '550px',
+                    transitionDuration: '6s', maxWidth: '400px',
                 }
             }}
             anchor={anchor}
@@ -38,7 +38,7 @@ export default function TemporaryDrawer(props: { anchor: Anchor, open: boolean, 
             onClose={toggleDrawer(anchor, false)}
         >
             <Box
-                sx={{ display: 'flex', width: '100%', alignItems: 'center', justifyItems: 'center', padding: '30px' }}
+                sx={{ display: 'flex', alignItems: 'center', justifyItems: 'center', padding: '30px' }}
                 role="presentation"
                 onClick={toggleDrawer(anchor, false)}
                 onKeyDown={toggleDrawer(anchor, false)}
