@@ -76,7 +76,7 @@ export const FormFolder = (input: { label: string, id: string }) => {
                 onMouseLeave={() => setIsHovering(false)}
                 onClick={handleClick}
             >
-                <div key={id.concat('div')} style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '10px', minHeight: '30px' }}>
+                <div key={id.concat('div')} style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '10px', height: '1em', padding:'0.1em' }}>
                     {selected ?
                         <FolderOpenOutlined style={{fontSize:'1em'}} key={id.concat('icon-1')} color={isHovering || selected ? (isHovering && !selected ? "info" : "action") : "primary"} /> :
                         <FolderOutlined style={{fontSize:'0.8em'}}  key={id.concat('icon-2')} color={isHovering || selected ? (isHovering && !selected ? "info" : "action") : "primary"} />
