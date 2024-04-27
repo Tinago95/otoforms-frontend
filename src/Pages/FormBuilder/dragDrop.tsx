@@ -239,60 +239,57 @@ export function DragDrop() {
         setSelectedFormId(newForm.id)
         setSelectedForm(newForm)
     }
-    return <ThemeProvider theme={theme}><div style={{ gap: "10px", flexDirection: 'column', justifyItems: 'center', alignItems: 'center', width: '100%' }}>
-        {selectedForm && selectedForm?.fields.length > 0 && <TemporaryDrawer anchor={'right'} open={showDrawer} toggleDrawer={setShowDrawer} type={selectedForm.fields.find((item) => item.id === selectedFieldId)?.fieldType as FieldType} onCancel={removeLastFieldFromBoard} onSave={updateField} />}
-        <div style={{ display: 'flex', justifyContent: 'end', width: '100%', paddingRight: '10px' }}>
+    return <ThemeProvider theme={theme}>
+        <div style={{  flexDirection: 'column', justifyItems: 'flex-end', alignItems: 'center', width: '100%' }}>
+            {selectedForm && selectedForm?.fields.length > 0 && <TemporaryDrawer anchor={'right'} open={showDrawer} toggleDrawer={setShowDrawer} type={selectedForm.fields.find((item) => item.id === selectedFieldId)?.fieldType as FieldType} onCancel={removeLastFieldFromBoard} onSave={updateField} />}
+    
+                {/* <div> <ToggleView callback={(input: string) => (setView(input))} /> </div> */}
+            
+            <div style={{ display: 'flex', gap: "10px", flexDirection: 'row', height: '100%', justifyItems: 'center', alignItems: 'flex-start', maxWidth: '90vw', maxHeight: '85vh' }} >
+                <StyledCard style={{
+                    width: '22%',
+                    display: "flex", justifyContent: 'flex-start', flexDirection: 'column', gridTemplateColumns: '1fr', gap: '10px',
+                    flexShrink: 1
+                }}>
+                    <div style={{ display: 'flex', justifyContent: 'center', padding: '10px', }}>
+                        <Typography fontWeight={900} color={'grey'}>Forms</Typography>
+                    </div>
+                    {
+                        forms.map((form, index) => (
+                            <FormFolder label={form.name} id={form.id} />
+                        ))
+                    }
+                    <EditableFolder label="" callback={addForm} />
+                </StyledCard>
+                <StyledCard ref={forms.length ? drop : null} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', backgroundColor: 'whitesmoke', position: 'relative', gap: '10px', flexShrink: 1 }}>
 
+                    <div style={{ marginBottom: '20px', width: '100%', }}>
+                        {selectedForm?.fields && <FormEngine editMode={edit} formDef={selectedForm?.fields as FieldDef[]} prefillData={{}} formUI={formUI} onFieldDelete={onFieldDelete} />}
+                        <TransitionAlerts {...{ message: 'create/select form before dragging fields', open: showWarning, severity: 'error', callback: setShowWarning }} />
+                    </div>
+                    {edit && <div style={{ display: 'flex', flexDirection: 'column', position: 'absolute', bottom: '10px', right: '10px', gap: '10px' }}>
+                        <Fab color='info' onClick={saveForm} variant='circular' disabled={!isDirty} >
+                            <icons.Save />
+                        </Fab>
+                        <Fab color='warning' onClick={deltForm} variant='circular' style={{ marginRight: '10px' }} disabled={!(forms.length > 0)}>
+                            <icons.Delete />
+                        </Fab>  </div>}
+                </StyledCard>
+                {edit && <StyledCard style={{ display: 'flex', flexDirection: 'column', gap: '5px', width: '21%', flexShrink: 1 }}>
+                    <div style={{ display: 'flex', justifyContent: 'center', padding: '6px', }}>
+                        <Typography fontWeight={900} color={'grey'}>
+                            Drag & Drop Fields
+                        </Typography>
+                    </div>
+                    {formFieldList.map((item, index) => (
+                        <ListItem ref={listItemRef} style={{ display: 'flex', width: '100%', justifyContent: 'center', }} key={item.label} disablePadding>
+                            <DragableField muiIcon={item.icon} label={item.label} callback={setShowWarning} type={item.type as FieldType} />
+                        </ListItem>
+                    ))}
+                </StyledCard>}
+            </div >
 
-
-
-            <div> <ToggleView callback={(input: string) => (setView(input))} /> </div>
-
-        </div>
-        <div style={{ display: 'flex', gap: "10px", flexDirection: 'row', padding: '10px', height: '100%', justifyItems: 'center', alignItems: 'flex-start', minWidth: '83vw' }} >
-            <StyledCard style={{
-                width: '22%',
-                display: "flex", justifyContent: 'flex-start', flexDirection: 'column', gridTemplateColumns: '1fr', gap: '10px', padding: "6px",
-            }}>
-                <div style={{ display: 'flex', justifyContent: 'center', padding: '10px', }}>
-                    <Typography fontWeight={900} color={'grey'}>Forms</Typography>
-                </div>
-                {
-                    forms.map((form, index) => (
-                        <FormFolder label={form.name} id={form.id} />
-                    ))
-                }
-                <EditableFolder label="" callback={addForm} />
-            </StyledCard>
-            <StyledCard ref={forms.length ? drop : null} style={{ padding: '30px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', backgroundColor: 'whitesmoke', position: 'relative', gap: '10px', }}>
-
-                <div style={{ marginBottom: '20px', width: '100%', }}>
-                    {selectedForm?.fields && <FormEngine editMode={edit} formDef={selectedForm?.fields as FieldDef[]} prefillData={{}} formUI={formUI} onFieldDelete={onFieldDelete} />}
-                    <TransitionAlerts {...{ message: 'create/select form before dragging fields', open: showWarning, severity: 'error', callback: setShowWarning }} />
-                </div>
-                {edit && <div style={{ display: 'flex', flexDirection: 'column', position: 'absolute', bottom: '10px', right: '10px', gap: '10px' }}>
-                    <Fab color='info' onClick={saveForm} variant='circular' disabled={!isDirty} >
-                        <icons.Save />
-                    </Fab>
-                    <Fab color='warning' onClick={deltForm} variant='circular' style={{ marginRight: '10px' }} disabled={!(forms.length > 0)}>
-                        <icons.Delete />
-                    </Fab>  </div>}
-            </StyledCard>
-            {edit && <StyledCard style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '21%', }}>
-                <div style={{ display: 'flex', justifyContent: 'center', padding: '6px', }}>
-                    <Typography fontWeight={900} color={'grey'}>
-                        Drag & Drop Fields
-                    </Typography>
-                </div>
-                {formFieldList.map((item, index) => (
-                    <ListItem ref={listItemRef} style={{ display: 'flex', width: '100%', justifyContent: 'center', }} key={item.label} disablePadding>
-                        <DragableField muiIcon={item.icon} label={item.label} callback={setShowWarning} type={item.type as FieldType} />
-                    </ListItem>
-                ))}
-            </StyledCard>}
         </div >
-
-    </div >
     </ThemeProvider >
 
 
