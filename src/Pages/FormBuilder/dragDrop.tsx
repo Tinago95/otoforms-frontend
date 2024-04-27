@@ -275,16 +275,16 @@ export function DragDrop() {
                             <icons.Delete />
                         </Fab>  </div>}
                 </StyledCard>
-                {edit && <StyledCard style={{ display: 'flex', flexDirection: 'column', gap: '5px', width: '21%', flexShrink: 1 }}>
+                {edit && <StyledCard style={{ display: 'flex', flexDirection: 'column', gap: '5px', width: '21%' }}>
                     <div style={{ display: 'flex', justifyContent: 'center', padding: '6px', }}>
                         <Typography fontWeight={900} color={'grey'}>
                             Drag & Drop Fields
                         </Typography>
                     </div>
                     {formFieldList.map((item, index) => (
-                        <ListItem ref={listItemRef} style={{ display: 'flex', width: '100%', justifyContent: 'center', }} key={item.label} disablePadding>
+                        <div ref={listItemRef} style={{ display: 'flex', justifyContent: 'center', width:'100%' }} key={item.label} >
                             <DragableField muiIcon={item.icon} label={item.label} callback={setShowWarning} type={item.type as FieldType} />
-                        </ListItem>
+                        </div>
                     ))}
                 </StyledCard>}
             </div >

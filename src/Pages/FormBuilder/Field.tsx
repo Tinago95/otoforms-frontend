@@ -42,14 +42,15 @@ export const DragableField = (props: DragableFieldProps) => {
         <CustomDiv
             // noBorder={true}
 
-            style={{ borderColor: isHovering ? "#6564DB" : 'grey', padding: '10px', borderRadius: '5px', minHeight: '50px' }}
+            style={{ display:'flex', borderColor: isHovering ? "#6564DB" : 'grey', gap:'10px',paddingLeft: '10px', borderRadius: '5px', width:'100%'  }}
             isDragging={isDragging}
             ref={drag}
             highlightColor="#6564DB"
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)} key={label.concat('customdiv')} dashed={true}  >
-            {isHovering ? <DragIndicator style={{ color: isDragging ? '#0268d1' : (isHovering ? "#6564DB" : 'grey') }} /> : <MuiIcon key={label.concat('customdiv')} style={{ color: 'grey' }} />}
-            <Typography key={label.concat('typography')} style={{ display: 'flex', width: '100%', padding: '15px', justifyContent: 'flex-start', color: isDragging ? '#0268d1' : (isHovering ? "#6564DB" : 'grey') }}>{label} </Typography>
+            <Typography key={label.concat('typography')} style={{ fontSize:'0.75em', color: isDragging ? '#0268d1' : (isHovering ? "#6564DB" : 'grey') }}>{label} </Typography>
+            {isHovering ? <DragIndicator style={{ color: isDragging ? '#0268d1' : (isHovering ? "#6564DB" : 'grey') }} /> : <MuiIcon key={label.concat('customdiv')} style={{ fontSize:'0.75em',color: 'grey' }} />}
+
         </CustomDiv>
 
     )

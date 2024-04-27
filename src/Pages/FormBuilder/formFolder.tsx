@@ -78,8 +78,8 @@ export const FormFolder = (input: { label: string, id: string }) => {
             >
                 <div key={id.concat('div')} style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '10px', minHeight: '30px' }}>
                     {selected ?
-                        <FolderOpenOutlined key={id.concat('icon-1')} color={isHovering || selected ? (isHovering && !selected ? "info" : "action") : "primary"} /> :
-                        <FolderOutlined key={id.concat('icon-2')} color={isHovering || selected ? (isHovering && !selected ? "info" : "action") : "primary"} />
+                        <FolderOpenOutlined style={{fontSize:'1em'}} key={id.concat('icon-1')} color={isHovering || selected ? (isHovering && !selected ? "info" : "action") : "primary"} /> :
+                        <FolderOutlined style={{fontSize:'0.8em'}}  key={id.concat('icon-2')} color={isHovering || selected ? (isHovering && !selected ? "info" : "action") : "primary"} />
                     }
                     <Typography key={id.concat('typo')} variant='body2' fontFamily={'inherit'} color={isHovering || selected ? (isHovering && !selected ? "#6564DB" : "action") : "primary"} >
                         {label}
@@ -123,11 +123,13 @@ export const EditableFolder = (input: { label: string, callback: (input: string)
                 <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', gap: labelText ? '10px' : '0px', alignItems: 'center' }}>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '10px', minHeight: '50px' }}>
 
-                        <FolderOutlined color="primary" />
+                        <FolderOutlined style={{fontSize:'1em'}}  color="primary" />
 
                         <TextField
+                        
                             InputProps={{
                                 style: {
+                                    fontSize:'0.7em',
                                     border: '1px solid transparent',
                                 }
                             }}
@@ -142,8 +144,8 @@ export const EditableFolder = (input: { label: string, callback: (input: string)
                     <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'row', gap: '5px', width: '100%' }}>
                         {labelText && (
                             <>
-                                <Button variant='outlined' onClick={onDone} style={{ width: '100%' }} color="info">Add</Button>
-                                <Button onClick={() => setLabelText('')} style={{ width: '100%' }} variant='outlined' color="secondary">Cancel</Button>
+                                <Button variant='outlined' onClick={onDone} style={{ width: '100%',fontSize:'0.5em' }} color="info">Add</Button>
+                                <Button onClick={() => setLabelText('')} style={{ width: '100%',fontSize:'0.5em' }} variant='outlined' color="secondary">Cancel</Button>
                             </>
                         )}
                     </div>
