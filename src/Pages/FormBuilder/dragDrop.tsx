@@ -245,10 +245,10 @@ export function DragDrop() {
     
                 {/* <div> <ToggleView callback={(input: string) => (setView(input))} /> </div> */}
             
-            <div style={{ display: 'flex', gap: "10px", flexDirection: 'row', height: '100%', justifyItems: 'center', alignItems: 'flex-start', maxWidth: '90vw', maxHeight: '90vh' }} >
+            <div style={{ display: 'flex', gap: "10px", flexDirection: 'row', height: '100%', justifyItems: 'center', alignItems: 'flex-start', maxWidth: '97vw', maxHeight: '93vh' }} >
                 <StyledCard style={{
                     width: '22%',
-                    display: "flex", justifyContent: 'flex-start', flexDirection: 'column', gridTemplateColumns: '1fr', gap: '10px',
+                    display: "flex", justifyContent: 'flex-start', flexDirection: 'column', gridTemplateColumns: '1fr', gap: '5px',
                     flexShrink: 1
                 }}>
                     <div style={{ display: 'flex', justifyContent: 'center', padding: '10px', }}>

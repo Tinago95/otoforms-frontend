@@ -38,7 +38,7 @@ const StyledDiv = styled.div<StyledDivProps>`
     background-color: ${props => props.selected ? props.highlightColor ?? '#6564DB' : 'white'};
     padding: 8px;
     border-radius: 4px;
-    width: 100%;
+    width: 90%;
     transition: background-color 0.3s ease, border-color 0.1s ease;
     cursor: pointer;
     border: 1px ${props => props.dashed ? 'dashed' : 'solid'} ${props => props.selected ? props.highlightColor ?? '#6564DB' : '#A9A9A9'};
@@ -87,6 +87,7 @@ export const FormFolder = (input: { label: string, id: string }) => {
     const [isHovering, setIsHovering] = useState(false);
     const [selected, setSelected] = useState<boolean>(false);
     const { selectedFormId, setSelectedFormId } = useContext(FormBuilderContext) as FormBuilderContextType;
+    const [truncatedLabel, setTruncatedLabel] = useState<string | null>(null);
     const [isOverflowed, setIsOverflowed] = useState<boolean>(false);
 
     useEffect(() => {
